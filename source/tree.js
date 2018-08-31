@@ -12,7 +12,7 @@ function tree(n) {
 		tree +=  freeSpace + Array(2*(n - level)).join(branch) + freeSpace + backSpace;
 	}
 
-	// добавиляю ствол
+	// добавляю ствол
 	var freeSpace = Array(n - 1).join(space);
 	tree += freeSpace + trunk + freeSpace + backSpace;
 
