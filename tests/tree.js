@@ -2,9 +2,11 @@
 
 QUnit.module('Тестируем функцию tree', function () {
 	QUnit.test('Ёлочек высотой ниже трёх не бывает', function (assert) {
+		assert.strictEqual(tree(-5), null);
 		assert.strictEqual(tree(0), null);
 		assert.strictEqual(tree(1), null);
 		assert.strictEqual(tree(2), null);
+		assert.strictEqual(tree('-5'), null);
 		assert.strictEqual(tree('0'), null);
 		assert.strictEqual(tree('1'), null);
 		assert.strictEqual(tree('2'), null);
@@ -52,5 +54,17 @@ QUnit.module('Тестируем функцию tree', function () {
 			'      |      \n';
 		assert.strictEqual(tree(8), expected);
 		assert.strictEqual(tree('8'), expected);
+	});
+
+	QUnit.test('Работает правильно с null и undefined', function (assert) {
+		assert.strictEqual(tree(null), null);
+		assert.strictEqual(tree(undefined), null);
+	});
+
+	QUnit.test('Работает правильно с неправильным аргументом', function (assert) {
+		assert.strictEqual(tree("hate trees"), null);
+		assert.strictEqual(tree([]), null);
+		assert.strictEqual(tree({a:"*"}), null);
+		assert.strictEqual(tree(function (){return 35;}), null);
 	});
 });
